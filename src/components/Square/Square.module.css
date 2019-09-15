@@ -1,0 +1,31 @@
+.Square {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 34px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 34px;
+}
+
+.Square:focus {
+    outline: none;
+}
+
+.Square:hover{
+    background: rgb(187, 184, 180);
+}
+
+.Green{
+    color: rgb(14, 121, 14);
+}
+
+.Red{
+    color: rgb(209, 6, 6);
+}
+

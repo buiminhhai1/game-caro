@@ -1,0 +1,15 @@
+.Red{
+    color: rgb(209, 6, 6);
+}
+
+.Green{
+    color: rgb(14, 121, 14);
+}
+.GameInfo{
+    
+    text-align: center;
+}
+.ControlHistory{
+    display: flex;
+    justify-content: space-around;
+}
