@@ -56,13 +56,14 @@ class Game extends Component {
         squares[i] = this.state.xIsNext ? "X" : "O";
         this.state.tick.play();
         this.setState((prevState)=> {
+            let updatedHistory = prevState.history.slice(0, prevState.stepNumber + 1);
             return {
-                history: prevState.history.concat([{
+                history: updatedHistory.concat([{
                     squares: squares
                 }]),
                 undo: [...prevState.history],
-                stepNumber: prevState.history.length,
-                xIsNext: !prevState.xIsNext
+                stepNumber: prevState.stepNumber + 1,
+                 xIsNext: !prevState.xIsNext
             }
         });
         

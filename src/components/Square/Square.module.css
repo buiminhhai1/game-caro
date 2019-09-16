@@ -29,3 +29,19 @@
     color: rgb(209, 6, 6);
 }
 
+@media (max-width: 500px){
+    .Square {
+        background: #fff;
+        border: 1px solid #999;
+        float: left;
+        font-size: 9px;
+        font-weight: bold;
+        line-height: 14px;
+        height: 14px;
+        margin-right: -1px;
+        margin-top: -1px;
+        padding: 0;
+        text-align: center;
+        width: 14px;
+    }   
+}

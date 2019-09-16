@@ -13,3 +13,14 @@
     display: flex;
     justify-content: space-around;
 }
+
+@media (max-width: 499px){
+    
+    .ControlHistory{
+        flex-direction: column;
+        color: red;
+    }
+    .DesktopOnly {
+        display:none;
+    }
+}

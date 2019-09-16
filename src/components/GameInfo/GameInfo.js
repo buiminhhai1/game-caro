@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './GameInfo.module.css';
 import Button from '../UI/Button/Button';
+
 const GameInfo = (props) => {
     const moves = props.history.map((step, move) => {
         const desc = move ? 'Go to move #' + move :
@@ -16,15 +17,17 @@ const GameInfo = (props) => {
 
     return(
         <div className={classes.GameInfo}>
-            <h2 className={classes[props.type]}>{props.status}</h2>
-            <Button btnType="Green" clicked={props.restart} >Restart</Button>
             
-            <div className={classes.ControlHistory}>
+            <h2 className={[classes[props.type], classes.DesktopOnly].join(' ')}>{props.status}</h2>
+            <Button btnType="Green" className={classes.DesktopOnly} clicked={props.restart} >Restart</Button>
+            
+            <div className={[classes.ControlHistory].join(' ')}>
                 
-                <Button btnType="Red" disabled={props.disabledPre} clicked={props.previous}>{'<-'}</Button>
-                <Button btnType="Red" disabled={props.disabledNext} clicked={props.next}>{'->'}</Button>
+                <Button btnType="Red" control="Green" disabled={props.disabledPre} clicked={props.previous}>{'Prev'}</Button>
+                <div>  </div>
+                <Button btnType="Red" control="Green" disabled={props.disabledNext} clicked={props.next}>{'Next'}</Button>
             </div>
-            <ol>{moves}</ol>
+            <ol className={[classes.DesktopOnly, classes.HistoryList].join(' ')}>{moves}</ol>
         </div>
     );
 };  

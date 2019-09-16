@@ -26,7 +26,7 @@ const Board = (props) => {
     });
         
     return (
-        <div>
+        <div className={classes.Board}>
             {resultBoard}
         </div>
     );

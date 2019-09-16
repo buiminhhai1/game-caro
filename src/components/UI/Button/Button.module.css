@@ -1,7 +1,7 @@
 .Button {
     background-color: transparent;
     border: none;
-    color: white;
+    color: black;
     outline: none;
     cursor: pointer;
     font: inherit;
@@ -36,4 +36,39 @@
     font-weight: normal !important;
     font-size: 15px !important;
     margin: 0 !important;
+}
+
+@media (max-width: 500px){
+    .Button {
+        background-color: transparent;
+        border: none;
+        color: white;
+        outline: none;
+        cursor: pointer;
+        font: inherit;
+        padding: 0px;
+        margin: 0px;
+        font-weight: bold;
+        font-size: 10px;
+    }
+    .Button:first-of-type {
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .Button:disabled{
+        color: #ccc;
+        cursor: not-allowed;
+    }
+    
+    .Red{
+        color: rgb(209, 6, 6);
+    }
+    
+    .Green{
+        color: rgb(14, 121, 14);
+    }
+    
+    .Primary{
+        color: rgb(10, 10, 95);
+    }
 }
