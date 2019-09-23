@@ -3,8 +3,19 @@ import classes from './Board.module.css';
 import Square from '../Square/Square';
 
 const Board = (props) => {
+    console.log("arraywin");
+    console.log(props.arrayWin);
+
     const renderSquare = (i) => {
-        return (
+        const teamWin = props.current % 2 === 0 ? "WinX" : "WinY";
+        
+        return props.arrayWin.indexOf(i) > -1 
+        ? (
+            <Square key={i}
+            value={props.squares[i]}
+            winner={teamWin}
+            onClick={() => props.onClick(i)} />
+        ) : (
             <Square key={i}
                 value={props.squares[i]}
                 onClick={() => props.onClick(i)}

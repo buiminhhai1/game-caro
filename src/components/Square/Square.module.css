@@ -28,7 +28,12 @@
 .Red{
     color: rgb(209, 6, 6);
 }
-
+.WinX{
+    background-color: rgb(210, 96, 30) !important;
+}
+.WinY{
+    background-color: rgb(30, 210, 135) !important;
+}
 @media (max-width: 500px){
     .Square {
         background: #fff;

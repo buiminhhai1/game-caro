@@ -6,13 +6,21 @@ const GameInfo = (props) => {
     const moves = props.history.map((step, move) => {
         const desc = move ? 'Go to move #' + move :
                             'Go to game start';
-       return (
+       return props.current ===  move ? (
            <li key={move} value={move}>
-               <Button btnType={"Primary"} btnSpec="Button_2" clicked={() => props.onClick(move)} >
+               <Button btnType={"Primary"} btnSpec="Button_2" current="Current" clicked={() => props.onClick(move)} >
                     {desc}
                 </Button> 
            </li>
-       );
+       ) 
+        : 
+       (
+       <li key={move} value={move}>
+        <Button btnType={"Primary"} btnSpec="Button_2" clicked={() => props.onClick(move)} >
+             {desc}
+         </Button> 
+        </li>
+        );
     });
 
     return(

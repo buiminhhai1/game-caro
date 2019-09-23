@@ -72,3 +72,8 @@
         color: rgb(10, 10, 95);
     }
 }
+
+.Current{
+    background-color: blueviolet !important;
+    color: white !important;
+}

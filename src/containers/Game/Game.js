@@ -35,9 +35,11 @@ class Game extends Component {
             ],
             undo: [],
             redo: [],
+            arrayWin: [],
             stepNumber: 0,
             xIsNext: true,
             isWinner: false,
+            isCanMove: true,
             backgroundMusic: sound,
             tick: soundTick,
             win: soundWin,
@@ -50,7 +52,7 @@ class Game extends Component {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         const squares = [...current.squares];
-        if(squares[i])
+        if(squares[i] || this.state.isCanMove === false)
             return;
 
         squares[i] = this.state.xIsNext ? "X" : "O";
@@ -68,18 +70,21 @@ class Game extends Component {
         });
         
         if(this.calculateWinner(squares,i)){
-            this.setState({
-                isWinner: true
-            }, (result) => {
-                this.state.win.play();
-                return;
-            });
+            setTimeout(() => {
+                this.setState({
+                    isWinner: true,
+                }, (result) => {
+                    this.state.win.play();
+                    return;
+                });
+            },1800);
+            
         }
     }
 
     jumpTo(step) {
         this.setState({
-            stepNumber: step, 
+            stepNumber: step,
             xIsNext: (step % 2) === 0
         });
     }
@@ -100,6 +105,11 @@ class Game extends Component {
                     && squares[row*20 + (col + 1)] === anotherTeam)
                         return false;
                 }
+                const temp = [row*20 + (col - 1), row*20 + (col - 2), row*20 + (col - 3), row*20 + (col - 4), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
                 
@@ -115,6 +125,11 @@ class Game extends Component {
                     && squares[(row+1)*20 + col] === anotherTeam)
                         return false;
                 }
+                const temp = [(row-1)*20 + col, (row-2)*20 + col,(row-3)*20 + col, (row-4)*20 + col, index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -129,6 +144,11 @@ class Game extends Component {
                     && squares[(row+1)*20 + (col+1)] === anotherTeam)
                         return false;
                 }
+                const temp = [(row-1)*20 + (col-1), (row-2)*20 + (col-2), (row-3)*20 + (col-3), (row-4)*20 + (col-4), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -143,6 +163,11 @@ class Game extends Component {
                     && squares[(row-1)*20 + (col+1)] === anotherTeam)
                         return false;
                 }
+                const temp = [(row+1)*20 + (col-1), (row+2)*20 + (col-2), (row+3)*20 + (col-3), (row+4)*20 + (col-4), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -159,6 +184,11 @@ class Game extends Component {
                         && squares[row*20 + (col + 2)] === anotherTeam)
                             return false;
                     }
+                    const temp = [row*20 + (col - 1), row*20 + (col - 2), row*20 + (col - 3), row*20 + (col + 1), index];
+                    this.setState({
+                        arrayWin: [...temp], 
+                        isCanMove: false
+                    });
                     return true;
                 }
                     
@@ -174,6 +204,11 @@ class Game extends Component {
                         && squares[(row+2)*20 + col] === anotherTeam)
                             return false;
                     }
+                    const temp = [(row-1)*20 + col, (row-2)*20 + col, (row-3)*20 + col, (row+1)*20 + col, index];
+                    this.setState({
+                        arrayWin: [...temp], 
+                        isCanMove: false
+                    });
                     return true;
                 }
             }
@@ -188,6 +223,11 @@ class Game extends Component {
                         && squares[(row+2)*20 + (col+2)] === anotherTeam)
                             return false;
                     }
+                    const temp = [(row-1)*20 + (col-1), (row-2)*20 + (col-2), (row-3)*20 + (col-3), (row+1)*20 + (col+1), index];
+                    this.setState({
+                        arrayWin: [...temp], 
+                        isCanMove: false
+                    });
                     return true;
                 }
             }
@@ -202,6 +242,11 @@ class Game extends Component {
                         && squares[(row+1)*20 + (col-1)] === anotherTeam)
                             return false;
                     }
+                    const temp = [(row+1)*20 + (col-1), (row+2)*20 + (col-2), (row+3)*20 + (col-3), (row-1)*20 + (col+1), index];
+                    this.setState({
+                        arrayWin: [...temp], 
+                        isCanMove: false
+                    });
                     return true;
                 }
             }
@@ -218,6 +263,11 @@ class Game extends Component {
                     && squares[row*20 + (col + 3)] === anotherTeam)
                         return false;
                 }
+                const temp = [row*20 + (col - 1), row*20 + (col - 2), row*20 + (col + 1), row*20 + (col + 2), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
                 
@@ -233,6 +283,11 @@ class Game extends Component {
                     && squares[(row+3)*20 + col] === anotherTeam)
                         return false;
                 }
+                const temp = [(row-1)*20 + col, (row-2)*20 + col, (row+1)*20 + col, (row+2)*20 + col, index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -247,6 +302,11 @@ class Game extends Component {
                     && squares[(row+3)*20 + (col+3)] === anotherTeam)
                         return false;
                 }
+                const temp = [(row-1)*20 + (col-1), (row-2)*20 + (col-2), (row+1)*20 + (col+1), (row+2)*20 + (col+2), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -261,6 +321,11 @@ class Game extends Component {
                     && squares[(row-3)*20 + (col+3)] === anotherTeam)
                         return false;
                 }
+                const temp = [(row+1)*20 + (col-1), (row+2)*20 + (col-2), (row-1)*20 + (col+1), (row-2)*20 + (col+2), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -277,6 +342,11 @@ class Game extends Component {
                     && squares[row*20 + (col + 4)] === anotherTeam)
                         return false;
                 }
+                const temp = [row*20 + (col - 1), row*20 + (col + 1), row*20 + (col + 2), row*20 + (col + 3), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
                 
@@ -292,6 +362,11 @@ class Game extends Component {
                     && squares[(row+4)*20 + col] === anotherTeam)
                         return false;
                 }
+                const temp = [(row-1)*20 + col, (row+1)*20 + col, (row+2)*20 + col, (row+3)*20 + col, index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -306,6 +381,11 @@ class Game extends Component {
                     && squares[(row+4)*20 + (col+4)] === anotherTeam)
                         return false;
                 }
+                const temp = [(row-1)*20 + (col-1), (row+1)*20 + (col+1), (row+2)*20 + (col+2),(row+3)*20 + (col+3), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -320,6 +400,11 @@ class Game extends Component {
                     && squares[(row-4)*20 + (col+4)] === anotherTeam)
                         return false;
                 }
+                const temp = [ (row+1)*20 + (col-1), (row-1)*20 + (col+1), (row-2)*20 + (col+2), (row-3)*20 + (col+3), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -336,6 +421,11 @@ class Game extends Component {
                     && squares[row*20 + (col + 5)] === anotherTeam)
                         return false;
                 }
+                const temp = [row*20 + (col + 1), row*20 + (col + 2), row*20 + (col + 3), row*20 + (col + 4), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -350,6 +440,11 @@ class Game extends Component {
                     && squares[(row+5)*20 + col] === anotherTeam)
                         return false;
                 }
+                const temp = [(row+1)*20 + col, (row+2)*20 + col, (row+3)*20 + col, (row+4)*20 + col, index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -364,6 +459,11 @@ class Game extends Component {
                     && squares[(row+5)*20 + (col+5)] === anotherTeam)
                         return false;
                 }
+                const temp = [(row+1)*20 + (col+1), (row+2)*20 + (col+2), (row+3)*20 + (col+3), (row+4)*20 + (col+4), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -378,6 +478,11 @@ class Game extends Component {
                     && squares[(row-5)*20 + (col+5)] === anotherTeam)
                         return false;
                 }
+                const temp = [(row-1)*20 + (col+1), (row-2)*20 + (col+2), (row-3)*20 + (col+3), (row-4)*20 + (col+4), index];
+                this.setState({
+                    arrayWin: [...temp], 
+                    isCanMove: false
+                });
                 return true;
             }
         }
@@ -393,8 +498,10 @@ class Game extends Component {
             undo: [],
             redo: [],
             stepNumber: 0,
+            arrayWin: [],
             xIsNext: true,
-            isWinner: false
+            isWinner: false,
+            isCanMove: true
         });
     }
 
@@ -403,7 +510,7 @@ class Game extends Component {
             if(prevState.history.length === 0) return;
             let temp = prevState.history;
             return{
-                stepNumber: prevState.stepNumber - 1, 
+                stepNumber: prevState.stepNumber - 1,
                 xIsNext: ((prevState.stepNumber - 1) % 2) === 0,
                 history: [...prevState.undo],
                 undo: prevState.undo.slice(0,prevState.undo.length-1),
@@ -418,7 +525,7 @@ class Game extends Component {
                 undo: [...prevState.history],
                 history: prevState.history.concat(prevState.redo[prevState.redo.length-1]),
                 redo: prevState.redo.slice(0, prevState.redo.length-1),
-                stepNumber: prevState.stepNumber + 1, 
+                stepNumber: prevState.stepNumber + 1,
                 xIsNext: ((prevState.stepNumber + 1) % 2) === 0,
             }
         });
@@ -427,7 +534,6 @@ class Game extends Component {
     playMusic() {
         let audio = new Audio(music);
         audio.play();
-        console.log(audio);
     }
 
     modalHandler(){
@@ -441,8 +547,10 @@ class Game extends Component {
                 ],
                 undo: [],
                 redo: [],
+                arrayWin: [],
                 stepNumber: 0,
                 xIsNext: true,
+                isCanMove: true
             };
         });
     }
@@ -469,11 +577,15 @@ class Game extends Component {
                     />
                 </Modal>
                 <div className={classes.Game}>
-                    <Board 
+                    <Board
+                        arrayWin={this.state.arrayWin} 
                         squares={current.squares}
                         onClick={i => this.handleClick(i)}
+                        current={this.state.stepNumber}
+                        
                     />
                     <GameInfo status={status} type={typeStatus} 
+                        current={this.state.stepNumber}
                         history={this.state.history}
                         onClick={step => this.jumpTo(step)}
                         restart={() =>this.restart()}               
