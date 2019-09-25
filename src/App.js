@@ -4,9 +4,9 @@ import classes from './App.module.css';
 
 function App() {
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <div className={classes.App}>
-      <Game/>
-
+      <Game />
     </div>
   );
 }
