@@ -30,5 +30,4 @@ Button.propTypes = {
   children: PropTypes.string.isRequired,
 };
 
-// eslint-disable-next-line eol-last
 export default Button;

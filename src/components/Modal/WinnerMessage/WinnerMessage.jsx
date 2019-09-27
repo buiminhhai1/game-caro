@@ -1,4 +1,3 @@
-/* eslint-disable eol-last */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Aux from '../../../hoc/Auxiliary/Auxiliary';

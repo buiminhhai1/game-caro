@@ -22,7 +22,8 @@ module.exports = {
   ],
   rules: {
     "linebreak-style": 0,
-    "parser": "babel-eslint",
-//    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    //"parser": "babel-eslint",
+    //"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
   },
+  
 };

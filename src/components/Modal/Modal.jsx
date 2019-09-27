@@ -31,5 +31,4 @@ Modal.propTypes = {
   children: PropTypes.any.isRequired,
 };
 
-// eslint-disable-next-line eol-last
 export default Modal;

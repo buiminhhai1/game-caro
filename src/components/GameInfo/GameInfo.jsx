@@ -58,5 +58,4 @@ GameInfo.propTypes = {
   next: PropTypes.func.isRequired,
 };
 
-// eslint-disable-next-line eol-last
 export default GameInfo;
