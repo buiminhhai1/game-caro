@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true
   },
   extends: [
     'airbnb',
@@ -23,7 +24,7 @@ module.exports = {
   rules: {
     "linebreak-style": 0,
     //"parser": "babel-eslint",
-    //"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
   },
   
 };
