@@ -48,7 +48,7 @@ const Board = ({
 
 Board.propTypes = {
   arrayWin: PropTypes.arrayOf(PropTypes.number).isRequired,
-  squares: PropTypes.arrayOf(PropTypes.object).isRequired,
+  squares: PropTypes.arrayOf(PropTypes.string).isRequired,
   onClick: PropTypes.func.isRequired,
   current: PropTypes.number.isRequired,
 };
