@@ -8,14 +8,14 @@ import {
   combineReducers,
 } from 'redux';
 import thunk from 'redux-thunk';
-import reducer from './store/reducers/infoGame';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import InfoGame from './store/reducers/infoGame';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
-  infoGame: reducer,
+  infoGame: InfoGame,
 });
 
 const store = createStore(rootReducer,
@@ -26,7 +26,8 @@ const store = createStore(rootReducer,
 ReactDOM.render(
   <Provider store={store}>
     <App />
-  </Provider>, document.getElementById('root'),
+  </Provider>,
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

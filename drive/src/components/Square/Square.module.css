@@ -34,9 +34,6 @@
 .WinY{
     background-color: rgb(30, 210, 135) !important;
 }
-.CurrentStep {
-  background-color: #999;
-}
 @media (max-width: 500px){
     .Square {
         background: #fff;

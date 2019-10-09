@@ -49,7 +49,8 @@ GameInfo.propTypes = {
   status: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   current: PropTypes.number.isRequired,
-  history: PropTypes.objectOf(Array).isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  history: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
   restart: PropTypes.func.isRequired,
   disabledPre: PropTypes.bool.isRequired,

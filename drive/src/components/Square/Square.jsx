@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classes from './Square.module.css';
@@ -17,8 +16,8 @@ const Square = ({ value, winner, onClick }) => {
 };
 
 Square.propTypes = {
-  value: PropTypes.string,
-  winner: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  winner: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 export default Square;

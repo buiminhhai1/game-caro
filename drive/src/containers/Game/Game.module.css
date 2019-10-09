@@ -1,0 +1,16 @@
+.Game {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 500px){
+    .Game{
+        display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+        
+        align-items: center;
+    }
+    
+}
