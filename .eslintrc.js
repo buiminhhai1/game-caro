@@ -18,12 +18,10 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-  ],
+  plugins: ["react"],
   rules: {
     "linebreak-style": 0,
-    //"parser": "babel-eslint",
+    // "parser": "babel-eslint",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
   },
   

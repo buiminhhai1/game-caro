@@ -7,8 +7,10 @@ import {
   compose,
   combineReducers,
 } from 'redux';
+import { BrowserRouter } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import reducer from './store/reducers/infoGame';
+import AuthReducer from './store/reducers/auth';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -16,6 +18,7 @@ import * as serviceWorker from './serviceWorker';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   infoGame: reducer,
+  auth: AuthReducer,
 });
 
 const store = createStore(rootReducer,
@@ -25,7 +28,9 @@ const store = createStore(rootReducer,
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>, document.getElementById('root'),
 );
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classes from './GameInfo.module.css';
 import Button from '../UI/Button/Button';
 
+
 const GameInfo = ({
   status,
   type,

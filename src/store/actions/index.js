@@ -8,3 +8,10 @@ export {
   handleClick,
   modalHandler,
 } from './infoGame';
+
+export {
+  auth,
+  logout,
+  setAuthRedirectPath,
+  authCheckState,
+} from './auth';
